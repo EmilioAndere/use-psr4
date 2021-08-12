@@ -9,7 +9,7 @@
 </head>
 <body>
     <?= $this->insert('partial::header') ?>
-    <h1 class="font-thin">Hello, World!</h1>
+  
     <?= $this->section('body') ?>
 </body>
 </html>

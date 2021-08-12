@@ -1,13 +1,28 @@
 <?php
 
 require_once '../vendor/autoload.php';
+require_once '../config/config.php';
+
+use App\Controllers\ProductosController;
 use League\Plates\Engine;
 
-$t = new Engine();
-$t->addFolder('views', __DIR__.'/../resources/views/');
-$t->addFolder('layouts', __DIR__.'/../resources/layouts/');
-$t->addFolder('partial', __DIR__.'/../resources/layouts/partials/');
-$prod = new \App\Controllers\ProductosController;
+use DI\Container;
+use Slim\Factory\AppFactory;
 
-echo $t->render('views::home',['title' => 'Dashboard']);
+$container = new Container();
+
+AppFactory::setContainer($container);
+$app = AppFactory::create();
+
+$container->set('ProductosController', function(){
+    $t = new Engine();
+    $this->view->addFolder('views', dirname(__FILE__).'/../resources/views/');
+    $this->view->addFolder('layouts',  dirname(__FILE__).'/../resources/layouts/');
+    $this->view->addFolder('partial',  dirname(__FILE__).'/../resources/layouts/partials/');
+        return new ProductosController($t);
+});
+
+require '../router/web.php';
+
+$app->run();
 
