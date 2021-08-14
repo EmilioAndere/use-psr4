@@ -1,14 +1,17 @@
 <?php
 
 require_once '../vendor/autoload.php';
-require_once '../config/config.php';
 
 use App\Controllers\ProductosController;
 use League\Plates\Engine;
+use Dotenv\Dotenv;
 
 use DI\Container;
 use Slim\Factory\AppFactory;
 
+$env = Dotenv::createImmutable(__DIR__.'/../');
+$env->load();
+require_once '../config/config.php';
 $container = new Container();
 
 AppFactory::setContainer($container);
