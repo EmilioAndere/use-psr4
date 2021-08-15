@@ -9,7 +9,7 @@
 </head>
 <body>
     <?= $this->insert('partial::header') ?>
-  
     <?= $this->section('body') ?>
 </body>
+<script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
 </html>
