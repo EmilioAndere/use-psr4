@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="css/style.css">
     <title><?= $_ENV['APP_NAME'] ?> - <?= $this->e($title) ?></title>
 </head>
-<body>
-    <?= $this->insert('partial::header') ?>
-    <?= $this->section('body') ?>
+<body class="relative min-100vh w-full overflow-hidden">
+    
+    <?= $this->insert('partial::sidebar') ?>
 </body>
 <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
 </html>
